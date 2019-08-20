@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{margin: 0;padding: 0;}
+    .container{
+      margin: 50px auto 0;
+      width: 1200px;
+    }
+  </style>
+</head>
+<body>
+  <form action="" ></form>
+  <ul class="container">
+    <li>
+      <span>账号</span>
+      <input type="text" name="name">
+    </li>
+    <li>
+      <span>密码</span>
+      <input type="password" name="password">
+    </li>
+    <li>
+      <button id="login">登录</button>
+    </li>
+  </ul>
+  <script>
+    let login = document.getElementById("login");
+    login.addEventListener("click",function(){
+      let name = document.querySelector("[name=name]").value;
+      let password = document.querySelector("[name=password]").value;
+      console.log(name,password);
+    })
+  </script>
+</body>
+</html>
