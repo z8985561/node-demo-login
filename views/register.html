@@ -24,23 +24,33 @@
       <input type="text" name="name">
     </li>
     <li>
-      <span>密码</span>
-      <input type="password" name="password">
+      <span>邮箱</span>
+      <input type="text" name="email">
     </li>
     <li>
-      <button id="login">登录</button>
+      <span>密码</span>
+      <input type="password" name="password1">
+    </li>
+    <li>
+      <span>再次输入密码</span>
+      <input type="password" name="password2">
+    </li>
+    <li>
+      <button id="register">注册</button>
     </li>
   </ul>
   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
   <script>
-    $("#login").on("click",function(){
-      console.log($("[name=name]").val(),$("[name=password]").val())
+    $("#register").on("click",function(){
+
       $.ajax({
         type: "post",
-        url: "/login",
+        url: "/register",
         data: {
           name:$("[name=name]").val(),
-          password:$("[name=password]").val()
+          email:$("[name=email]").val(),
+          password1:$("[name=password1]").val(),
+          password2:$("[name=password2]").val(),
         },
         dataType: "json",
         success: function (res) {
