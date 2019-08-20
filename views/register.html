@@ -29,11 +29,11 @@
     </li>
     <li>
       <span>密码</span>
-      <input type="password" name="password1">
+      <input type="password" name="password">
     </li>
     <li>
       <span>再次输入密码</span>
-      <input type="password" name="password2">
+      <input type="password" name="repassword">
     </li>
     <li>
       <button id="register">注册</button>
@@ -49,12 +49,15 @@
         data: {
           name:$("[name=name]").val(),
           email:$("[name=email]").val(),
-          password1:$("[name=password1]").val(),
-          password2:$("[name=password2]").val(),
+          password:$("[name=password]").val(),
+          repassword:$("[name=repassword]").val(),
         },
         dataType: "json",
         success: function (res) {
-          console.log(res)
+          console.log(res,111)
+          if(res.error==0){
+            window.location.href = "./login"
+          }
         }
       });
     })
