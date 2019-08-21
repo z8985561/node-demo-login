@@ -6,8 +6,12 @@ module.exports = (app) =>{
   // 登录数据接口
   router.post("/login",require("./user").login)
 
+  // 用户注册
   router.get("/register",require("./user").register)
   router.post("/register",require("./user").register)
+
+  // 首页
+  router.get("/",require("./home").index)
 
   app.use(router.routes()).use(router.allowedMethods())
 

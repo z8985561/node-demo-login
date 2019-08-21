@@ -2,14 +2,16 @@ const UserModel = require('../models/user')
 
 module.exports = {
   async index( ctx ,next ){
+    if(ctx.session.user){
+      ctx.body = "您已登录";
+      ctx.redirect('/')
+    }
     await ctx.render("login",{title:"用户登录页面"})
   },
   async login( ctx ,next ){
     const { name, password } = ctx.request.body
     // ctx.body = ctx.request.body
     let user = await UserModel.findOne({name})
-    console.log(user);
-    
     let errMsg = "";
     if(!user.name){
       errMsg = "用户名错误或不存在"
@@ -20,13 +22,17 @@ module.exports = {
       ctx.body = {errMsg,error:1}
       return;
     }
-    ctx.ssession.user = user;
+    ctx.session.user = user;
     ctx.body = {error:0,msg:"登录成功！"}
   },
   async register( ctx ,next ){
+    if(ctx.session.user){
+      ctx.body = "您已登录";
+      ctx.redirect('/')
+    }
     if (ctx.method === 'GET') {
       await ctx.render('register', {
-        title: '用户登录'
+        title: '用户注册'
       })
       return
     }
@@ -51,6 +57,6 @@ module.exports = {
       ctx.body = { msg:"success" }
     })
     ctx.body = { msg:"success",error:0}
-    
+
   }
 }
